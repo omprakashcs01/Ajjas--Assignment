@@ -1,8 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Journey = () => {
+const Journey = ({distance, duration}) => {
+  const distanceKm = (distance / 1000).toFixed(2);
+  const minutes = Math.floor((duration % 3600) / 60);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -16,13 +19,13 @@ const Journey = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Distance Travelled</Text>
           <View style={styles.valueContainer}>
-            <Text style={styles.value}>85.19</Text>
+            <Text style={styles.value}>{distanceKm}</Text>
             <Text style={styles.unit}>km</Text>
           </View>
-          <Text style={styles.footer}>
-            <Text style={styles.arrowDown}>↓ </Text>
+          <View style={styles.footer}>
+            <Ionicons name="arrow-down" style={styles.arrowDown} />
             <Text style={styles.footerText}>24% vs preceding period</Text>
-          </Text>
+          </View>
         </View>
 
         <View style={styles.divider} />
@@ -30,15 +33,15 @@ const Journey = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Time Duration</Text>
           <View style={styles.valueContainer}>
-            <Text style={styles.value}>2</Text>
+            <Text style={styles.value}>{hours}</Text>
             <Text style={styles.unit}>hr</Text>
-            <Text style={styles.value}>20</Text>
+            <Text style={styles.value}>{minutes}</Text>
             <Text style={styles.unit}>min</Text>
           </View>
-          <Text style={styles.footer}>
-            <Text style={styles.arrowDown}>↓ </Text>
+          <View style={styles.footer}>
+            <Ionicons name="arrow-down" style={styles.arrowDown} />
             <Text style={styles.footerText}>24% vs preceding period</Text>
-          </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -66,22 +69,23 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   body: {
-    flexDirection: 'row',
     marginTop: 20,
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
   },
   section: {
     flex: 1,
     alignItems: 'center',
+    marginBottom: 20,
   },
   sectionTitle: {
     fontSize: 18,
     color: 'grey',
+    marginBottom: 10,
   },
   valueContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     marginTop: 10,
   },
   value: {
@@ -91,23 +95,24 @@ const styles = StyleSheet.create({
   unit: {
     fontSize: 20,
     color: '#fff',
-    marginTop: 20,
     paddingLeft: 6,
+    paddingBottom: 10,
   },
   divider: {
     width: 1,
+    height: '100%',
     backgroundColor: 'grey',
     marginHorizontal: 10,
   },
   footer: {
-    marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    color: '#f00',
+    marginTop: 10,
   },
   arrowDown: {
     color: '#f00',
     fontSize: 16,
+    marginRight: 4,
   },
   footerText: {
     color: '#fff',

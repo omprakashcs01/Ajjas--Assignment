@@ -24,8 +24,8 @@ const App = () => {
             headerLeft: () => (
               <Button
                 title="✕"
-                onPress={() => navigation.goBack()} // Use onPress instead of onClick
-                color="#FFD700" // Use color prop to set button text color
+                onPress={() => navigation.goBack()}
+                color="#FFD700"
               />
             ),
             headerStyle: {

@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const RidingBehavior = () => {
+const RidingBehavior = ({score}) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -13,7 +13,7 @@ const RidingBehavior = () => {
       </View>
       <View style={styles.body}>
         <View style={styles.percentageContainer}>
-          <Text style={styles.percentage}>91%</Text>
+          <Text style={styles.percentage}>{score}%</Text>
         </View>
         <Text style={styles.status}>Excellent</Text>
       </View>
